@@ -8,7 +8,9 @@ module.exports= {
 		const statusChannel = client.channels.cache.get('815850620938485801');
 
 		let theTime = math.convertTime(Date.now());
-		let readyTime = `${theTime.hours}:${theTime.mins}`
+		let hours = theTime.hours + 5
+		let mins = theTime.mins + 30
+		let readyTime = `${hours}:${mins}`
 		const readyEmbed = new discord.MessageEmbed()
 			.setColor('#75FF3A')
 			.setThumbnail(client.user.avatarURL('png'))
