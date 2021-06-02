@@ -1,6 +1,6 @@
 const {Command} = require('discord.js-commando');
 const discord = require('discord.js');
-const math = require('../../math.js');
+const math = require('../../helpers/math.js');
 const jimp = require('jimp');
 
 module.exports = class ogCommand extends Command {

@@ -11,15 +11,21 @@ module.exports = class ReloadCommand extends Command {
         });
     }
     run(args) {
-        console.log(args.argString)
         let argsArray = args.argString.split(' ');
-        let commandName = argsArray[0];
+        let commandName = argsArray[1];
         let commands = this.client.registry.findCommands();
-        for (const command of commands) {
+        for (let command of commands) {
             if (command[0] == commandName) {
-                command.reload()
+                var reloadingCmd = command
+                break
             }
         }
-        args.say('reloaded')
+        try {
+            reloadingCmd[1].reload()
+            console.log(`[INFO] - ${reloadingCmd[0]} has been reloaded`)
+            args.say("command reloaded!")
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

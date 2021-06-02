@@ -9,7 +9,7 @@ const client = new CommandoClient({
 	owner: ownerId,
 	invite: 'https://discord.gg/yaJzTaDP',
 });
-module.exports = { client };
+module.exports ={client};
 
 client.registry
 	.registerGroups([

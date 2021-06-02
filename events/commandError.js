@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-const ready = require('./ready');
 
 module.exports = {
     name: 'commandError',
