@@ -11,6 +11,7 @@ module.exports = class EmojifyCommand extends Command {
 	}
 	run(message, args) {
 	let emojis = [];
+	const letterOrNum = /^[0-9a-zA-Z]+$/;
 	const writtenNumber = {
 		0: "zero",
 		1: "one",
@@ -24,20 +25,24 @@ module.exports = class EmojifyCommand extends Command {
 		9: "nine"
 	}
 	for (const word of args) {
-		for (const characters of word) {
-			const smallCharacters = characters.toLowerCase()
+		for (const character of word) {
+			const smallCharacter = character.toLowerCase()
 
-			if (!isNaN(smallCharacters) && smallCharacters !== ' ') {
-				let emojiNumber = writtenNumber[smallCharacters];
-				emojis.push(`:${emojiNumber}:`)
-			} else {
-				let discordEmoji = `:regional_indicator_${smallCharacters}:`
-
-				if (discordEmoji === `:regional_indicator_ :`) {
-					emojis.push(' ')
+			if (smallCharacter.match(letterOrNum) || smallCharacter == ' ') {
+				if (!isNaN(smallCharacter) && smallCharacter !== ' ') {
+					let emojiNumber = writtenNumber[smallCharacter];
+					emojis.push(`:${emojiNumber}:`)
 				} else {
-					emojis.push(discordEmoji);
-				}	
+					let discordEmoji = `:regional_indicator_${smallCharacter}:`
+	
+					if (discordEmoji === `:regional_indicator_ :`) {
+						emojis.push(' ')
+					} else {
+						emojis.push(discordEmoji);
+					}	
+				}
+			}  else {
+				message.reply(`\`${smallCharacter}\` cannot be turned in to an emoji!`)
 			}
 		}
 	}
