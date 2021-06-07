@@ -7,7 +7,7 @@ const fs = require('fs');
 const client = new CommandoClient({
 	commandPrefix: prefix,
 	owner: ownerId,
-	invite: 'https://discord.gg/yaJzTaDP',
+	invite: 'https://discord.gg/AzCxAAcJqq',
 });
 module.exports ={client};
 
