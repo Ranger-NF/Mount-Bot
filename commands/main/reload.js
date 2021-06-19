@@ -20,12 +20,17 @@ module.exports = class ReloadCommand extends Command {
                 break
             }
         }
-        try {
-            reloadingCmd[1].reload()
-            console.log(`[INFO] - ${reloadingCmd[0]} has been reloaded`)
-            args.say("command reloaded!")
-        } catch (error) {
-            console.log(error);
+
+        if (reloadingCmd == undefined && argsArray !== [ '' ]) {
+            args.reply(`${commandName} is not an available command`)
+        } else {
+            try {
+                reloadingCmd[1].reload()
+                console.log(`[INFO] - ${reloadingCmd[0]} has been reloaded`)
+                args.say("command reloaded!")
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 }

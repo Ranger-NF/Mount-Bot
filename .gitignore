@@ -2,3 +2,5 @@ package-lock.json
 main.json
 /node_modules
 /manipulated
+/commands/beta
+/.vscode
