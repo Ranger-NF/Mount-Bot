@@ -1,4 +1,4 @@
-# Mount Bot
+# Mount Bot [No More Updates]
 
 A discord.js bot made for entertainment purposes
 
@@ -8,4 +8,4 @@ A discord.js bot made for entertainment purposes
 - Ai chat
 - No moderation/utility commands
 
-###### Join the [support server](https://discord.gg/yaJzTaDP) and join us in this adventure!
+###### Join the [support server](https://discord.gg/yaJzTaDP) and join us in this adventure! [Still alive!]

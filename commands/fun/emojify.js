@@ -11,6 +11,8 @@ module.exports = class EmojifyCommand extends Command {
 	}
 	run(message, args) {
 	let emojis = [];
+
+	// Regex for finding alphanumeric characters
 	const letterOrNum = /^[0-9a-zA-Z]+$/;
 	const writtenNumber = {
 		0: "zero",
