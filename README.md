@@ -1,4 +1,10 @@
-# Mount Bot [No More Updates]
+# Mount Bot
+
+> [!NOTE]
+> 
+> This repo is under going a complete updation
+> 
+> Checkout [revisit branch](https://github.com/Ranger-NF/Mount-Bot/tree/revisit) for up-to-date details
 
 A discord.js bot made for entertainment purposes
 
@@ -7,5 +13,3 @@ A discord.js bot made for entertainment purposes
 - Fun commands
 - Ai chat
 - No moderation/utility commands
-
-###### Devolopment has been completed, You can use the code in this repo though.
