@@ -1,14 +1,20 @@
 const {token,prefix, ownerId} = require('./main.json');
-const discord = require('discord.js');
-const { CommandoClient } = require('discord.js-commando');
+const { SapphireClient } = require('@sapphire/framework');
+const { GatewayIntentBits } = require('discord.js');
 const path = require('path');
 const fs = require('fs');
 
-const client = new CommandoClient({
-	commandPrefix: prefix,
-	owner: ownerId,
-	invite: 'https://discord.gg/AzCxAAcJqq',
-});
+const client = new SapphireClient({
+	intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
+	loadMessageCommandListeners: true
+  });
+
+// const client = new CommandoClient({
+// 	commandPrefix: prefix,
+// 	owner: ownerId,
+// 	invite: 'https://discord.gg/AzCxAAcJqq',
+// });
+
 module.exports ={client};
 
 client.registry
