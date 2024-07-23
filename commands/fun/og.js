@@ -1,24 +1,25 @@
-const {Command} = require('discord.js-commando');
-const discord = require('discord.js');
+const {Command} = require('@sapphire/framework');
+const {EmbedBuilder, AttachmentBuilder} = require('discord.js');
 const math = require('../../helpers/math.js');
 const jimp = require('jimp');
 const { greyscale } = require('jimp');
 
 module.exports = class ogCommand extends Command {
-	constructor(client){
-		super(client,{
+	constructor(context, options) {
+		super(context, {
+			...options,
 			name: 'og',
 			group: 'fun',
 			memberName: 'og',
 			description: 'shows off whose more og'
 		});
 	}
-	async run(message, args){
+	async messageRun(message, args){
 		let member1 = message.member;
 		let member2 = message.mentions.members.first();
 
 		if (member2 == undefined) {
-			message.reply('Try mentioning a user next time')
+			message.channel.send('Try mentioning a user next time')
 		} else {
 			var ogMember = (member1.joinedTimestamp < member2.joinedTimestamp) ? member1 : member2;
 			var nonOg = (member1.joinedTimestamp > member2.joinedTimestamp) ? member1 : member2;
@@ -36,9 +37,9 @@ module.exports = class ogCommand extends Command {
 			blackNWhite.composite(crown, 0 , 0)
 			blackNWhite.write('./manipulated/og.png')
 
-			const attachment = new discord.MessageAttachment('./manipulated/og.png', 'og.png');
+			const attachment = new AttachmentBuilder('./manipulated/og.png');
 
-			let ogEmbed = new discord.MessageEmbed()
+			let ogEmbed = new new EmbedBuilder()
 				.setColor('WHITE')
 				.setTitle('OG scale')
 				.setDescription(`${ogMember.user.username} is cooler than ${nonOg.user.username}`)
@@ -47,7 +48,7 @@ module.exports = class ogCommand extends Command {
 				.setImage('attachment://og.png')
 				.setFooter(`Command invoked by ${message.author.tag}`, message.author.avatarURL());
 
-			message.say(ogEmbed);
+			message.channel.send({embeds: [ogEmbed], files: [attachment]});
 		}
 	}
 }

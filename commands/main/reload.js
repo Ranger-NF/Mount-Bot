@@ -1,8 +1,9 @@
-const {Command} = require('discord.js-commando');
+const {Command} = require('@sapphire/framework');
 
 module.exports = class ReloadCommand extends Command {
-    constructor(client){
-        super(client,{
+    constructor(context, options){
+        super(context,{
+            ...options,
             name: 'reload',
             description: 'reloads the specified command',
             memberName: 'reload',
@@ -21,7 +22,7 @@ module.exports = class ReloadCommand extends Command {
             }
         }
 
-        if (reloadingCmd == undefined && argsArray !== [ '' ]) {
+        if (reloadingCmd == undefined && argsArray != [ '' ]) {
             args.reply(`${commandName} is not an available command`)
         } else {
             try {
