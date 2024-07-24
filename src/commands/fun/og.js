@@ -1,10 +1,10 @@
-const {Command} = require('@sapphire/framework');
-const {EmbedBuilder, AttachmentBuilder} = require('discord.js');
-const math = require('../../helpers/math.js');
-const jimp = require('jimp');
-const { greyscale } = require('jimp');
+import { Command } from '@sapphire/framework';
+import { EmbedBuilder, AttachmentBuilder } from 'discord.js';
+import { convertTime } from '../../helpers/math.js';
+import { read } from 'jimp';
+// import { greyscale } from 'jimp';
 
-module.exports = class ogCommand extends Command {
+export default class ogCommand extends Command {
 	constructor(context, options) {
 		super(context, {
 			...options,
@@ -25,15 +25,15 @@ module.exports = class ogCommand extends Command {
 			var nonOg = (member1.joinedTimestamp > member2.joinedTimestamp) ? member1 : member2;
 
 			let ogTime = nonOg.joinedTimestamp - ogMember.joinedTimestamp;
-			let convertedTime = math.convertTime(ogTime);
+			let convertedTime = convertTime(ogTime);
 
 			const joinedTimeStamp = `${convertedTime.days} days and ${convertedTime.hours} hours!`
 
 			const avatar = ogMember.user.avatarURL({format:'png'})
-			let background = await jimp.read(avatar)
+			let background = await read(avatar)
 			let greyscale_bg = background.grayscale();
 			const blackNWhite = greyscale_bg.contrast(0);
-			const crown = await jimp.read('./overlays/og_badge.png')
+			const crown = await read('./overlays/og_badge.png')
 			blackNWhite.composite(crown, 0 , 0)
 			blackNWhite.write('./manipulated/og.png')
 

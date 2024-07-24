@@ -1,7 +1,7 @@
-const {Command} = require('@sapphire/framework');
-const { client } = require('../../bot.js')
+import { Command } from '@sapphire/framework';
+import { client } from '../../index';
 
-module.exports = class quitCommand extends Command {
+export default class quitCommand extends Command {
 	constructor(context, options) {
 		super(context, {
 			...options,
