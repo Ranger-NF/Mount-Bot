@@ -7,6 +7,6 @@ const client = new SapphireClient({
 	loadMessageCommandListeners: true
   });
 
-module.exports ={client};
+export default client;
 
 client.login(token);

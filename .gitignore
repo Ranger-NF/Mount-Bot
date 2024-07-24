@@ -1,6 +1,12 @@
+# Js related
 package-lock.json
-main.json
 /node_modules
-/manipulated
-/commands/beta
+
+# Editor related
 /.vscode
+
+# Bot process related
+src/manipulated
+
+# Secrets
+src/main.json
