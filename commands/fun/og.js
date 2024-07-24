@@ -11,7 +11,7 @@ module.exports = class ogCommand extends Command {
 			name: 'og',
 			group: 'fun',
 			memberName: 'og',
-			description: 'shows off whose more og'
+			description: 'Shows off whose more og'
 		});
 	}
 	async messageRun(message, args){

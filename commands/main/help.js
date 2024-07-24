@@ -14,17 +14,17 @@ module.exports = class HelpCommand extends Command {
     }
     messageRun(message, args) {
         let commands = [
-            		['main', 'General commands'],
-            		['fun', 'Commands made just for entertainment'],
-            		['beta', 'Commands that are in devolopment']
-            	]
+            ['help', 'A descriptive help command'],
+            ['emojify', 'Turns characters to emojis'],
+            ['og', 'Shows off whose more og'],
+        ]
+
         let commandsInfo = [];
 
         for (let command of commands) {
-            if (command[1].hidden === false) {
-            commandsInfo.push({name: command[1].name, value: command[1].description});
-            }
+            commandsInfo.push({name: command[0], value: command[1]});
         }
+
         const helpEmbed = new EmbedBuilder()
             .setTitle('Help')
             .setDescription(`\`Usage: ${prefix} <command> <input(s)>\`\nCommands available:`)
