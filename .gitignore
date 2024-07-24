@@ -6,7 +6,7 @@ package-lock.json
 /.vscode
 
 # Bot process related
-src/manipulated/
+/src/manipulated/
 
 # Secrets
-src/main.json
+/src/main.json
