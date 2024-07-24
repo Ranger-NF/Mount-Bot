@@ -6,8 +6,6 @@ export default class EmojifyCommand extends Command {
 		super(context, {
 			...options,
 			name: 'emojify',
-			group: 'fun',
-			memberName: 'emojify',
 			description: 'Turns characters to emojis',
 		});
 	}
@@ -22,12 +20,9 @@ export default class EmojifyCommand extends Command {
 
 	async messageRun(message: Message, args: Args) {
 		let emojis: string[] = [];
-		
-		while (args.next() != null) {
-			let argsAsString = await args.pick('string');
+		let wordToEmojify: string | null = args.next()
 
-			let fullSentence = argsAsString.split(' ');
-			console.log(fullSentence)
+		while (wordToEmojify!= null) {
 	
 			// Regex for finding alphanumeric characters
 			const letterOrNum = /^[0-9a-zA-Z]+$/;
@@ -43,80 +38,34 @@ export default class EmojifyCommand extends Command {
 				8: "eight",
 				9: "nine"
 			}
-			for (const word of fullSentence) {
-				for (const character of word) {
-					const smallCharacter = character.toLowerCase()
-	
-					if (smallCharacter.match(letterOrNum) || smallCharacter == ' ') {
-						if (!isNaN(smallCharacter) && smallCharacter !== ' ') {
-							let emojiNumber = writtenNumber[smallCharacter];
-							emojis.push(`:${emojiNumber}:`)
-						} else {
-							let discordEmoji = `:regional_indicator_${smallCharacter}:`
-			
-							if (discordEmoji === `:regional_indicator_ :`) {
-								emojis.push(' ')
-							} else {
-								emojis.push(discordEmoji);
-							}	
-						}
-					}  else {
-						message.channel.send(`\`${smallCharacter}\` cannot be turned in to an emoji!`)
-					}
-				}
-	
-				emojis.push(' ')
-			}
-			message.channel.send(emojis.join(' '));
-		}
-	}
 
-	// async chatInputRun(interaction) {
+			for (const character of wordToEmojify) {
+				const smallCharacter = character.toLowerCase()
 
-	// 	let emojis = [];
-	// 	let argsAsString = await args.pick('string');
+				if (smallCharacter.match(letterOrNum) || smallCharacter == ' ') {
 
-	// 	let fullSentence = argsAsString.split(' ');
-
-	// 	// Regex for finding alphanumeric characters
-	// 	const letterOrNum = /^[0-9a-zA-Z]+$/;
-	// 	const writtenNumber = {
-	// 		0: "zero",
-	// 		1: "one",
-	// 		2: "two",
-	// 		3: "three",
-	// 		4: "four",
-	// 		5: "five",
-	// 		6: "six",
-	// 		7: "seven",
-	// 		8: "eight",
-	// 		9: "nine"
-	// 	}
-	// 	for (const word of fullSentence) {
-	// 		for (const character of word) {
-	// 			const smallCharacter = character.toLowerCase()
-
-	// 			if (smallCharacter.match(letterOrNum) || smallCharacter == ' ') {
-	// 				if (!isNaN(smallCharacter) && smallCharacter !== ' ') {
-	// 					let emojiNumber = writtenNumber[smallCharacter];
-	// 					emojis.push(`:${emojiNumber}:`)
-	// 				} else {
-	// 					let discordEmoji = `:regional_indicator_${smallCharacter}:`
+					if (!Number.isNaN(Number(smallCharacter)) && smallCharacter !== ' ') {
+						let emojiNumber = writtenNumber[smallCharacter];
+						emojis.push(`:${emojiNumber}:`)
+					} else {
+						let discordEmoji = `:regional_indicator_${smallCharacter}:`
 		
-	// 					if (discordEmoji === `:regional_indicator_ :`) {
-	// 						emojis.push(' ')
-	// 					} else {
-	// 						emojis.push(discordEmoji);
-	// 					}	
-	// 				}
-	// 			}  else {
-	// 				message.channel.send(`\`${smallCharacter}\` cannot be turned in to an emoji!`)
-	// 			}
-	// 		}
+						if (discordEmoji === `:regional_indicator_ :`) {
+							emojis.push(' ')
+						} else {
+							emojis.push(discordEmoji);
+						}	
+					}
+				}  else {
+					message.channel.send(`\`${smallCharacter}\` cannot be turned in to an emoji!`)
+				}
+			}
+	
+			emojis.push(' ')
 
-	// 		emojis.push(' ')
-	// 	}
-	// 	message.channel.send(emojis.join(' '));
+			wordToEmojify = args.next()
+		}
 
-	// }
+		message.channel.send(emojis.join(' '));
+	}
 }
