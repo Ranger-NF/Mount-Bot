@@ -1,8 +1,8 @@
-const { Command } = require('@sapphire/framework');
-const fetch = require('node-fetch');
-const {pgamerxApiKey} = require('../../main.json');
+import { Command } from '@sapphire/framework';
+import fetch from 'node-fetch';
+import { pgamerxApiKey } from '../../main.json';
 
-module.exports = class JokeCommand extends Command {
+export default class JokeCommand extends Command {
 	constructor(context, options) {
 		super(context, {
 			...options,

@@ -1,14 +1,12 @@
-const { Command } = require('@sapphire/framework');
-const {EmbedBuilder} = require('discord.js');
-const { prefix } = require('../../main.json');
+import { Command, CommandOptions } from '@sapphire/framework';
+import { EmbedBuilder } from 'discord.js';
+import { prefix } from '../../main.json';
 
-module.exports = class HelpCommand extends Command {
-    constructor(context, options){
+export default class HelpCommand extends Command {
+    constructor(context: Command.LoaderContext, options: CommandOptions | undefined){
         super(context, {
             ...options,
             name: 'help',
-            memberName: 'help',
-            group: 'main',
             description: 'A descriptive help command'
         });
     }
@@ -19,7 +17,7 @@ module.exports = class HelpCommand extends Command {
             ['og', 'Shows off whose more og'],
         ]
 
-        let commandsInfo = [];
+        let commandsInfo: {name: string, value: string}[] = [];
 
         for (let command of commands) {
             commandsInfo.push({name: command[0], value: command[1]});
@@ -29,7 +27,7 @@ module.exports = class HelpCommand extends Command {
             .setTitle('Help')
             .setDescription(`\`Usage: ${prefix} <command> <input(s)>\`\nCommands available:`)
             .addFields(commandsInfo)
-            .setThumbnail(this.container.client.user.avatarURL())
+            .setThumbnail(this.container.client.user!.avatarURL())
             .setColor('#22770F')
             .setFooter({ text: `Command invoked by ${message.author.tag}`, iconURL: message.author.avatarURL()})
 
