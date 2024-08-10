@@ -8,3 +8,6 @@ package-lock.json
 
 # Bot process related
 /src/manipulated/
+
+# Secret
+.env
