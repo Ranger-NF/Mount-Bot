@@ -4,13 +4,11 @@ export class ReadyListener extends Listener {
   constructor(context: Listener.LoaderContext) {
     super(context, {
       once: true,
-      event: Events.ClientReady,
+      event: Events.MessageCommandError,
     });
   }
 
   run(client: SapphireClient) {
-    const { username } = client.user!;
-
-    console.log(`[INFO] - Logged in as ${username}`);
+    console.log(`[ERROR] - error occured when running message command`
   }
 }
