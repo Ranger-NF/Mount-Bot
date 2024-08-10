@@ -1,24 +1,24 @@
 {
   "name": "mount",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "An entertaining discord bot!",
   "main": "src/main.ts",
   "dependencies": {
     "@sapphire/framework": "^5.2.1",
     "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
     "jimp": "^0.22.12"
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsup src/index.ts --minify"
+    "build": "tsc"
   },
   "author": "Ranger",
   "license": "GPL",
   "devDependencies": {
     "@sapphire/ts-config": "^5.0.1",
     "@sapphire/type": "^2.5.1",
-    "tsup": "^8.2.2",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4"
   }

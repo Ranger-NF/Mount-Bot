@@ -1,4 +1,4 @@
-import { token } from './main.json';
+import 'dotenv/config'
 import { SapphireClient } from '@sapphire/framework';
 import { GatewayIntentBits } from 'discord.js';
 
@@ -9,4 +9,4 @@ const client = new SapphireClient({
 
 export default client;
 
-client.login(token);
+client.login(process.env.TOKEN);

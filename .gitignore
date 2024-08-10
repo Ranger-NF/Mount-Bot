@@ -1,6 +1,7 @@
 # Js related
 package-lock.json
 /node_modules
+/dist
 
 # Editor related
 /.vscode
