@@ -1,10 +1,8 @@
 # Mount Bot
 
 > [!NOTE]
-> 
+>
 > This repo is under going a complete updation
-> 
-> Checkout [revisit branch](https://github.com/Ranger-NF/Mount-Bot/tree/revisit) for up-to-date details
 
 A discord.js bot made for entertainment purposes
 
@@ -13,3 +11,29 @@ A discord.js bot made for entertainment purposes
 - Fun commands
 - Ai chat
 - No moderation/utility commands
+
+## Usage
+Clone the repo:
+```fish
+git clone https://github.com/Ranger-NF/Mount-Bot/tree/revisit
+cd Mount-Bot
+```
+
+Make a new `.env` file with the following entries:
+```dotenv
+TOKEN="" # Your bot token
+PREFIX="" # The prefix you want to use
+OWNER_ID="" # You discord ID
+```
+
+Run the following commands
+```fish
+npm i
+npm run dev
+```
+
+Running on production
+```fish
+npm run build
+npm run start
+```
